@@ -1,4 +1,3 @@
-from urllib import response
 import streamlit as st
 import pandas as pd
 import difflib 
@@ -35,24 +34,10 @@ def recommend(movie):
     return recommended_movies, posters
 
 st.write('These movies are similar to ', option)
-
 if st.button('Recommend movies'):
     names, posters = recommend(option)
     col1, col2, col3, col4 = st.columns([1,1,1,1])
-
-    with col1:
-        st.caption(names[0])
-        st.image(posters[0], use_column_width='always')
-
-    with col2:
-        st.caption(names[1])
-        st.image(posters[1], use_column_width='always')
-
-    with col3:
-        st.caption(names[2])
-        st.image(posters[2], use_column_width='always')
-
-    with col4:
-        st.caption(names[3])
-        st.image(posters[3], use_column_width='always')
-    
+    for i in range(4):
+        with col1:
+            st.caption(names[i])
+            st.image(posters[i], use_column_width='always')
