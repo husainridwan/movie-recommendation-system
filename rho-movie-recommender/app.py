@@ -1,13 +1,13 @@
 import streamlit as st
 import pandas as pd
 import difflib 
-import pickle
+import joblib
 import requests
 
 st.title("Movie Recommendation System")
 
-movie_dict = pickle.load(open('movie_dict.pkl', 'rb'))
-similarity = pickle.load(open('similarity.pkl', 'rb'))
+movie_dict = joblib.load(open('movie_dict.pkl', 'rb'))
+similarity = joblib.load(open('similarity.pkl', 'rb'))
 
 movies = pd.DataFrame(movie_dict)
 option = st.selectbox('Enter/Select the movie you would like recommendations for?', movies['Title'].values)
